@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from .models import Student, Course
+from .models import Student, Course, Post
 
 
 # Create your views here.
 def homeView(request):
     return render(request, template_name='home.html', context={
-        'courses': Course.objects.all()
+        'courses': Course.objects.all(),
+        'posts': Post.objects.all()
     })
 
 

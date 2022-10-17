@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from datetime import datetime
 
 # Create your models here.
 class Student(models.Model):
@@ -18,6 +19,15 @@ class Course(models.Model):
     price = models.FloatField(null=False, blank=False)
     duration = models.IntegerField(null=False, blank=False)
     description = models.TextField(null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+
+class Post(models.Model):
+    title = models.CharField(max_length=100, null=False, blank=False)
+    image = models.ImageField(upload_to='static/images', null=True, blank=True)
+    text = models.TextField(null=False, blank=False)
+    datetime = models.DateTimeField(default=datetime.now(), null=False, blank=False)
 
     def __str__(self):
         return self.title

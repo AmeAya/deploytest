@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(zv+&lj1lm9tue0z@ce8u3q#@%p#g#d+m&08-7c6gcqe*lk@!r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['AmeAya.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['AmeAya.pythonanywhere.com']
 
 
 # Application definition
@@ -124,6 +124,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# MEDIA_ROOT = '/home/AmeAya/DanaSchool/static/images'
-# MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/AmeAya/DanaSchool/static/images'
+MEDIA_URL = '/media/'
 

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    {% for student in callbackRequests %}
+        <div class="row">
+            <div class="col-sm" align="center">
+                {{ student.last_name }} {{ student.first_name }}
+            </div>
+            <div class="col-sm" align="center">
+                {{ student.email }}
+            </div>
+            <div class="col-sm" align="center">
+                {{ student.phone }}
+            </div>
+            <div class="col-sm" align="right">
+                <a href="{% url 'updateStudent' student.pk %}">
+                    <img src="{% static 'images/pen.svg' %}" alt="pen">
+                </a>
+                <a href="{% url 'deleteStudent' student.pk %}">
+                    <img src="{% static 'images/trash.svg' %}" alt="trash">
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

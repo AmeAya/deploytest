@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" action="{% url 'deleteStudentFunc' thisStudent.pk %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <p class="text-justify">Are you sure to delete {{ thisStudent.last_name }} {{ thisStudent.first_name }}?</p>
+            <button type="submit" class="btn btn-primary">
+                Confirm
+            </button>
+            <a href="{% url 'backOffice' %}">
+                <button type="button" class="btn btn-primary">
+                    Cancel
+                </button>
+            </a>
+        </div>
+    </form>
+
+{% endblock content %}

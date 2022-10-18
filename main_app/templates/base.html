@@ -40,13 +40,25 @@
                     {% endfor %}
                 </div>
             </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'backOffice' %}">Back Office</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>
 
-<div>
-    {% block content %}
-    {% endblock content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-sm-10">
+            <div class="shadow p-3 mb-5 bg-body rounded">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer class="text-center text-lg-start bg-white text-muted">

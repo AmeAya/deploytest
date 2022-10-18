@@ -38,8 +38,44 @@ def makeCallbackView(request):
         newStudent.save()
     return redirect(homeView)
 
+
 def courseDetailView(request, title):
     return render(request, template_name='courseDetail.html', context={
         'courses': Course.objects.all(),
         'thisCourse': Course.objects.get(title=title)
     })
+
+
+def backOfficeView(request):
+    return render(request, template_name='backOffice.html', context={
+        'courses': Course.objects.all(),
+        'callbackRequests': Student.objects.all()
+    })
+
+
+def deleteStudentView(request, pk):
+    return render(request, template_name='deleteStudent.html', context={
+        'courses': Course.objects.all(),
+        'thisStudent': Student.objects.get(pk=pk),
+    })
+
+
+def deleteStudent(request, pk):
+    Student.objects.get(pk=pk).delete()
+    return redirect(backOfficeView)
+
+def updateStudentView(request, pk):
+    return render(request, template_name='updateStudent.html', context={
+        'courses': Course.objects.all(),
+        'thisStudent': Student.objects.get(pk=pk),
+    })
+
+
+def updateStudent(request, pk):
+    Student.objects.filter(pk=pk).update(
+        first_name=request.POST.get('firstName'),
+        last_name=request.POST.get('lastName'),
+        email=request.POST.get('email'),
+        phone=request.POST.get('phone')
+    )
+    return redirect(backOfficeView)

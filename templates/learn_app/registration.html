@@ -1,0 +1,38 @@
+{% extends 'learn_app/base.html' %}
+{% block content %}
+    <form method="post" action="{% url 'create_user' %}" name="create_user_form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username_id">Username</label>
+            <input type="text" class="form-control" id="username_id" placeholder="Enter Your Username" name="username"
+                   required="required">
+        </div>
+        <div class="form-group">
+            <label for="password_id">Password</label>
+            <input type="password" class="form-control" id="password_id" placeholder="Enter Password" name="password"
+                   onChange="onChange()" aria-describedby="password_help" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   required="required">
+            <small id="password_help" class="form-text text-muted">
+                Password must contain al least 8 characters, 1 number, 1 lowercase (a-z), 1 uppercase (A-Z)
+            </small>
+        </div>
+        <div class="form-group">
+            <label for="confirm_id">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm_id" placeholder="Confirm Password" name="confirm"
+                   onChange="onChange()" aria-describedby="password_help" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                   required="required">
+        </div>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+    <script>
+        function onChange() {
+              const password = document.querySelector('input[name=password]');
+              const confirm = document.querySelector('input[name=confirm]');
+              if (confirm.value === password.value) {
+                  confirm.setCustomValidity('');
+              } else {
+                  confirm.setCustomValidity('Passwords do not match');
+              }
+        }
+    </script>
+{% endblock content %}

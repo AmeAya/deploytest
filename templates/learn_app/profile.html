@@ -1,0 +1,21 @@
+{% extends 'learn_app/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 text-right">
+                <h4 class="fw-bold">Username:</h4>
+                <p class="fw-semibold">First Name:</p>
+                <p class="fw-semibold">Last Name:</p>
+                <p class="fw-semibold">Email:</p>
+                <p class="fw-semibold">Phone Number:</p>
+            </div>
+            <div class="col-6 text-left">
+                <h4 class="fw-bold">{{ userInfo.user_id.username }}</h4>
+                <p class="fw-semibold">{{ userInfo.first_name }}</p>
+                <p class="fw-semibold">{{ userInfo.last_name }}</p>
+                <p class="fw-semibold">{{ userInfo.email }}</p>
+                <p class="fw-semibold">{{ userInfo.phone }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -5,14 +5,14 @@ from .models import Student, Course, Post
 
 # Create your views here.
 def homeView(request):
-    return render(request, template_name='home.html', context={
+    return render(request, template_name='main_app/home.html', context={
         'courses': Course.objects.all(),
         'posts': Post.objects.all()
     })
 
 
 def callbackView(request):
-    return render(request, template_name='callback.html', context={
+    return render(request, template_name='main_app/callback.html', context={
         'courses': Course.objects.all()
     })
 
@@ -40,21 +40,21 @@ def makeCallbackView(request):
 
 
 def courseDetailView(request, title):
-    return render(request, template_name='courseDetail.html', context={
+    return render(request, template_name='main_app/courseDetail.html', context={
         'courses': Course.objects.all(),
         'thisCourse': Course.objects.get(title=title)
     })
 
 
 def backOfficeView(request):
-    return render(request, template_name='backOffice.html', context={
+    return render(request, template_name='main_app/backOffice.html', context={
         'courses': Course.objects.all(),
         'callbackRequests': Student.objects.all()
     })
 
 
 def deleteStudentView(request, pk):
-    return render(request, template_name='deleteStudent.html', context={
+    return render(request, template_name='main_app/deleteStudent.html', context={
         'courses': Course.objects.all(),
         'thisStudent': Student.objects.get(pk=pk),
     })
@@ -65,7 +65,7 @@ def deleteStudent(request, pk):
     return redirect(backOfficeView)
 
 def updateStudentView(request, pk):
-    return render(request, template_name='updateStudent.html', context={
+    return render(request, template_name='main_app/updateStudent.html', context={
         'courses': Course.objects.all(),
         'thisStudent': Student.objects.get(pk=pk),
     })

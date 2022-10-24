@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'main_app/base.html' %}
 {% block content %}
     {% for post in posts %}
-        <h4>{{ post.title }}</h4>
+        <h4 align="center">{{ post.title }}</h4>
         <img class="courseImageClass" src="{{ post.image.url }}" alt="{{ post.title }}">
         <p class="text-justify">{{ post.text }}</p>
         <p class="text-justify">{{ post.datetime }}</p>

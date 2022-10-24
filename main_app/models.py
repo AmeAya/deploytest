@@ -14,7 +14,7 @@ class Student(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
-    image = models.ImageField(upload_to='static/images', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     price_per_month = models.FloatField(null=False, blank=False)
     price = models.FloatField(null=False, blank=False)
     duration = models.IntegerField(null=False, blank=False)
@@ -25,7 +25,7 @@ class Course(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
-    image = models.ImageField(upload_to='static/images', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     text = models.TextField(null=False, blank=False)
     datetime = models.DateTimeField(default=datetime.now(), null=False, blank=False)
 

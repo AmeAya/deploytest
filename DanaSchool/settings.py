@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(zv+&lj1lm9tue0z@ce8u3q#@%p#g#d+m&08-7c6gcqe*lk@!r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['AmeAya.pythonanywhere.com']
+ALLOWED_HOSTS = ['ameayaa.pythonanywhere.com']
 # ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
@@ -120,6 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = 'home/AmeAyaa/deploytest/static'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

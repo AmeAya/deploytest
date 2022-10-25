@@ -5,7 +5,12 @@ from .models import *
 
 # Create your views here.
 def homeView(request):
-    return render(request, template_name='learn_app/home.html')
+    return render(request,
+                  template_name='learn_app/home.html',
+                  context={
+                      'contents': Content.objects.all().order_by('create_date'),
+                      'categories': Category.objects.all().order_by('title')
+                  })
 
 def createUser(request):
     if request.method == 'POST':
@@ -38,7 +43,10 @@ def createUserInfo(request):
 def profile(request):
     return render(request,
                   template_name='learn_app/profile.html',
-                  context={'userInfo': LearnUser.objects.get(user_id=request.user.pk)})
+                  context={
+                      'userInfo': LearnUser.objects.get(user_id=request.user.pk),
+                      'categories': Category.objects.all().order_by('title')
+                  })
 
 def logOut(request):
     logout(request)
@@ -55,3 +63,19 @@ def logIn(request):
             return redirect(homeView)
         else:
             return redirect('sign_in')
+
+def homeByCategory(request, category_id):
+    return render(request,
+                  template_name='learn_app/home.html',
+                  context={
+                      'contents': Content.objects.filter(category=category_id).order_by('create_date'),
+                      'categories': Category.objects.order_by('title')
+                  })
+
+def contentDetail(request, content_id):
+    return render(request,
+                  template_name='learn_app/content_detail.html',
+                  context={
+                      'categories': Category.objects.order_by('title'),
+                      'content': Content.objects.get(pk=content_id)
+                           })

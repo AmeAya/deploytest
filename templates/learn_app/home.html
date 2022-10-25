@@ -1,6 +1,16 @@
 {% extends 'learn_app/base.html' %}
 {% block content %}
     {% if user.is_authenticated %}
+        {% for content in contents %}
+            <div class="shadow p-3 mb-5 bg-body rounded">
+                <a href="{% url 'content_detail' content.id %}"><h4 class="text-left">{{ content.title }}</h4></a>
+                {% if content.description %}
+                    <h6 class="text-left">{{ content.description }}</h6>
+                {% endif %}
+                <h6 class="text-left">{{ content.category }}</h6>
+                <p class="text-left">{{ content.create_date }}</p>
+            </div>
+        {% endfor %}
     {% else %}
 
     {% endif %}

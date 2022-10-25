@@ -3,12 +3,12 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
-from datetime import datetime
+from django.utils.timezone import now
 
 # Create your models here.
 class Subscription(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE, blank=False, null=False)
-    purchase_time = models.DateTimeField(default=datetime.now(), blank=False, null=False)
+    purchase_time = models.DateTimeField(default=now(), blank=False, null=False)
     expire_date = models.DateTimeField(blank=False, null=False)
     cost = models.PositiveIntegerField(
         validators=[MinValueValidator(0)]
@@ -26,3 +26,20 @@ class LearnUser(models.Model):
 
     def __str__(self):
         return str(self.last_name) + ' ' + str(self.first_name)
+
+class Category(models.Model):
+    title = models.CharField(max_length=50, null=False, blank=False)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class Content(models.Model):
+    title = models.CharField(max_length=50, null=False, blank=False)
+    description = models.TextField()
+    create_date = models.DateTimeField(default=now(), null=False, blank=False)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=False, blank=False)
+    video = models.FileField(upload_to='videos/', null=False, blank=False)
+
+    def __str__(self):
+        return self.title

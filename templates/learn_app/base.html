@@ -24,15 +24,19 @@
                     <a class="nav-link" href="{% url 'home' %}">Dana`School <span class="sr-only">(current)</span></a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        Drop-Down
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                    </div>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for category in categories %}
+                                <a class="dropdown-item" href="{% url 'home_by_category' category.id %}">{{ category.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endif %}
 
                 <li class="nav-item my-2 my-lg-0">
 

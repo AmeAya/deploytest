@@ -11,5 +11,7 @@ urlpatterns = [
     path('logOut/', logOut, name='log_out'),
     path('signIn/', TemplateView.as_view(template_name='learn_app/login.html'), name='sign_in'),
     path('logIn/', logIn, name='log_in'),
+    path('homeByCategory/<int:category_id>/', homeByCategory, name='home_by_category'),
+    path('contentDetail/<int:content_id>', contentDetail, name='content_detail'),
     path('', homeView, name='learn_home'),
 ]

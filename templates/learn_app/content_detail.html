@@ -1,0 +1,12 @@
+{% extends 'learn_app/base.html' %}
+{% block content %}
+    <h4 class="display-4 text-center">{{ content.title }}</h4>
+    <video style="max-width: 100%; max-height: 100%" controls>
+        <source src="{{ content.video.url }}" type="video/mp4">
+    </video>
+    <br>
+    <br>
+    <p class="test-justify lead">{{ content.description }}</p>
+    <p class="test-justify">{{ content.category }}</p>
+    <p class="text-left">{{ content.create_date }}</p>
+{% endblock content %}

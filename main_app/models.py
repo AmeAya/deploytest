@@ -15,8 +15,8 @@ class Student(models.Model):
 class Course(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
     image = models.ImageField(null=True, blank=True)
-    price_per_month = models.FloatField(null=False, blank=False)
-    price = models.FloatField(null=False, blank=False)
+    price_per_month = models.IntegerField(null=False, blank=False)
+    price = models.IntegerField(null=False, blank=False)
     duration = models.IntegerField(null=False, blank=False)
     description = models.TextField(null=False, blank=False)
 

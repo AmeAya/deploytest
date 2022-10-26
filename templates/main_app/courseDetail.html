@@ -2,7 +2,9 @@
 {% block content %}
     <h3 class="text-center">{{ thisCourse.title }}</h3>
     {% if thisCourse.image.url is not null %}
-        <img class="courseImageClass" src="{{ thisCourse.image.url }}">
+        <img class="text-center" src="{{ thisCourse.image.url }}"
+             style="max-height: 100%; max-width: 100%;"
+             alt="{{ thisCourse.title }}">
         <br><br>
     {% endif %}
     <div class="shadow-none p-3 mb-5 bg-light rounded">

@@ -1,11 +1,15 @@
 {% extends 'main_app/base.html' %}
 {% block content %}
     {% for post in posts %}
-        <h4 class="text-center">{{ post.title }}</h4>
-        <img class="courseImageClass" src="{{ post.image.url }}" alt="{{ post.title }}">
-        <br>
-        <br>
-        <p class="text-justify lead">{{ post.text }}</p>
-        <p class="text-justify">{{ post.datetime }}</p>
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <h4 class="text-center">{{ post.title }}</h4>
+            <div class="text-center">
+                <img class="courseImageClass " src="{{ post.image.url }}" alt="{{ post.title }}">
+            </div>
+            <br>
+            <br>
+            <p class="text-justify lead">{{ post.text }}</p>
+            <p class="text-justify">{{ post.datetime }}</p>
+        </div>
     {% endfor %}
 {% endblock content %}

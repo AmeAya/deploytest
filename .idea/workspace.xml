@@ -5,6 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DanaSchool/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DanaSchool/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/RangesMiddleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/RangesMiddleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main_app/courseDetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main_app/courseDetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main_app/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main_app/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +115,9 @@
       <workItem from="1666511355657" duration="1551000" />
       <workItem from="1666601439747" duration="37000" />
       <workItem from="1666623281783" duration="9426000" />
-      <workItem from="1666692882696" duration="9341000" />
+      <workItem from="1666692882696" duration="9781000" />
+      <workItem from="1666803020817" duration="82000" />
+      <workItem from="1666803255075" duration="680000" />
     </task>
     <servers />
   </component>

@@ -6,8 +6,8 @@ from .models import Student, Course, Post
 # Create your views here.
 def homeView(request):
     return render(request, template_name='main_app/home.html', context={
-        'courses': Course.objects.all(),
-        'posts': Post.objects.all()
+        'courses': Course.objects.all().order_by('title'),
+        'posts': Post.objects.all().order_by('-datetime')
     })
 
 

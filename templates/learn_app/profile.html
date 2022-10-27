@@ -1,8 +1,18 @@
 {% extends 'learn_app/base.html' %}
 {% block content %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'profile_info' %}">Personal info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile_sub_info' %}">Subscription history</a>
+        </li>
+    </ul>
+
     <div class="container">
         <div class="row">
-            <div class="col-6 text-right">
+            <div class="col-2 text-left">
                 <h4 class="fw-bold">Username:</h4>
                 <p class="fw-semibold">First Name:</p>
                 <p class="fw-semibold">Last Name:</p>

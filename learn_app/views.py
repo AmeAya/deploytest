@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from .models import *
 
 # Create your views here.
@@ -40,6 +41,7 @@ def createUserInfo(request):
         user.save()
         return redirect(homeView)
 
+@login_required(login_url='sign_in')
 def profile(request):
     return render(request,
                   template_name='learn_app/profile.html',
@@ -79,3 +81,12 @@ def contentDetail(request, content_id):
                       'categories': Category.objects.order_by('title'),
                       'content': Content.objects.get(pk=content_id)
                            })
+
+@login_required(login_url='sign_in')
+def subscriptionHistory(request):
+    return render(request,
+                  template_name='learn_app/subscription_info.html',
+                  context={
+                      'categories': Category.objects.order_by('title'),
+                      'subscriptions': Subscription.objects.filter(user_id=request.user.pk),
+                  })

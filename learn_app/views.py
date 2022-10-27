@@ -68,10 +68,9 @@ def logIn(request):
 
 def homeByCategory(request, category_id):
     return render(request,
-                  template_name='learn_app/home.html',
+                  template_name='learn_app/home_by_category.html',
                   context={
-                      'contents': Content.objects.filter(category=category_id).order_by('create_date'),
-                      'categories': Category.objects.order_by('title')
+                      'contents': Content.objects.filter(category=category_id).order_by('create_date')
                   })
 
 def contentDetail(request, content_id):

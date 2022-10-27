@@ -1,0 +1,10 @@
+{% extends 'learn_app/base.html' %}
+{% block content %}
+    {% for content in contents %}
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <a href="{% url 'content_detail' content.id %}"><h4 class="text-left">{{ content.title }}</h4></a>
+            <h6 class="text-left">{{ content.category }}</h6>
+            <p class="text-left">{{ content.create_date }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}

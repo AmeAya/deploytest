@@ -29,6 +29,8 @@ class LearnUser(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
+    image = models.ImageField(null=True, blank=True)
+    preview = models.TextField(null=True, blank=True)
     description = models.TextField()
 
     def __str__(self):

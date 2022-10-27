@@ -6,7 +6,7 @@
     </video>
     <br>
     <br>
-    <p class="test-justify lead">{{ content.description }}</p>
+    <p class="test-justify lead">{{ content.description|linebreaks }}</p>
     <p class="test-justify">{{ content.category }}</p>
     <p class="text-left">{{ content.create_date }}</p>
 {% endblock content %}

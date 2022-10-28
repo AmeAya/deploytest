@@ -3,24 +3,29 @@
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'profile_info' %}">Personal info</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'profile_info' %}">Personal Info</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'profile_sub_info' %}">Subscription history</a>
+            <a class="nav-link" href="{% url 'purchase_history' %}">Purchase History</a>
         </li>
     </ul>
-
+    <br>
     <div class="container">
         <div class="row">
-            <div class="col-2 text-left">
+            <div class="col-3 text-left">
                 <h4 class="fw-bold">Username:</h4>
                 <p class="fw-semibold">First Name:</p>
                 <p class="fw-semibold">Last Name:</p>
                 <p class="fw-semibold">Email:</p>
                 <p class="fw-semibold">Phone Number:</p>
+                <p class="fw-semibold">Subscriber:</p>
+                {% if userInfo.is_subscriber %}
+                    <p class="fw-semibold">Active Subscription:</p>
+                    <p class="fw-semibold">Expire Date:</p>
+                {% endif %}
             </div>
             <div class="col-6 text-left">
                 <h4 class="fw-bold">{{ userInfo.user_id.username }}</h4>
@@ -28,6 +33,11 @@
                 <p class="fw-semibold">{{ userInfo.last_name }}</p>
                 <p class="fw-semibold">{{ userInfo.email }}</p>
                 <p class="fw-semibold">{{ userInfo.phone }}</p>
+                <p class="fw-semibold">{{ userInfo.is_subscriber }}</p>
+                {% if userInfo.is_subscriber %}
+                    <p class="fw-semibold">{{ userInfo.active_subscription.title }}</p>
+                    <p class="fw-semibold">{{ userInfo.expire_date }}</p>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -42,11 +42,19 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 {% if user.is_authenticated %}
-                                    <a href="{% url 'home_by_category' category.id %}">
-                                        <button type="button" class="btn btn-primary">
-                                            Watch Content
-                                        </button>
-                                    </a>
+                                    {% if thisUser.is_subscriber %}
+                                        <a href="{% url 'home_by_category' category.id %}">
+                                            <button type="button" class="btn btn-primary">
+                                                Watch Content
+                                            </button>
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'sub_list' %}">
+                                            <button type="button" class="btn btn-primary">
+                                                Subscribe
+                                            </button>
+                                        </a>
+                                    {% endif %}
                                 {% else %}
                                 <a href="{% url 'sign_up' %}">
                                     <button type="button" class="btn btn-primary">

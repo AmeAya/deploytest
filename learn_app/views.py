@@ -1,3 +1,5 @@
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
@@ -6,12 +8,15 @@ from .models import *
 
 # Create your views here.
 def homeView(request):
+    context = {
+        'contents': Content.objects.all().order_by('create_date'),
+        'categories': Category.objects.all().order_by('title'),
+    }
+    if request.user.is_authenticated:
+        context['thisUser'] = LearnUser.objects.get(user_id=request.user)
     return render(request,
                   template_name='learn_app/home.html',
-                  context={
-                      'contents': Content.objects.all().order_by('create_date'),
-                      'categories': Category.objects.all().order_by('title')
-                  })
+                  context=context)
 
 def createUser(request):
     if request.method == 'POST':
@@ -46,8 +51,7 @@ def profile(request):
     return render(request,
                   template_name='learn_app/profile.html',
                   context={
-                      'userInfo': LearnUser.objects.get(user_id=request.user.pk),
-                      'categories': Category.objects.all().order_by('title')
+                      'userInfo': LearnUser.objects.get(user_id=request.user.pk)
                   })
 
 def logOut(request):
@@ -77,15 +81,32 @@ def contentDetail(request, content_id):
     return render(request,
                   template_name='learn_app/content_detail.html',
                   context={
-                      'categories': Category.objects.order_by('title'),
                       'content': Content.objects.get(pk=content_id)
-                           })
+                  })
 
 @login_required(login_url='sign_in')
-def subscriptionHistory(request):
+def purchaseHistory(request):
     return render(request,
-                  template_name='learn_app/subscription_info.html',
+                  template_name='learn_app/purchase_history.html',
                   context={
-                      'categories': Category.objects.order_by('title'),
-                      'subscriptions': Subscription.objects.filter(user_id=request.user.pk),
+                      'purchases': PurchaseHistory.objects.filter(user_id=request.user.pk).order_by('-purchase_time')
                   })
+
+def subscriptionsList(request):
+    return render(request,
+                  template_name='learn_app/subscriptions.html',
+                  context={
+                      'subscriptions': Subscription.objects.all().order_by('duration_month')
+                  })
+
+def subscribe(request, subscription_id):
+    user = LearnUser.objects.get(user_id=request.user.id)
+    purchase = PurchaseHistory(user_id=user,
+                               purchase_time=datetime.now(),
+                               subscribe=Subscription.objects.get(id=subscription_id),
+                               cost=Subscription.objects.get(id=subscription_id).price
+                               )
+    purchase.save()
+    expire_date = datetime.now() + relativedelta(months=Subscription.objects.get(id=subscription_id).duration_month)
+
+    return redirect(homeView)

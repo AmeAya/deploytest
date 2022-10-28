@@ -1,0 +1,21 @@
+{% extends 'learn_app/base.html' %}
+{% block content %}
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Duration(month)</th>
+            <th scope="col">Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sub in subscriptions %}
+            <tr>
+                <th scope="row">{{ sub.title }}</th>
+                <td>{{ sub.duration_month }}</td>
+                <td>{{ sub.price }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

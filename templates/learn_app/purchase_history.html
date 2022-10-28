@@ -3,31 +3,32 @@
 
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'profile_info' %}">Personal info</a>
+            <a class="nav-link" aria-current="page" href="{% url 'profile_info' %}">Personal Info</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="{% url 'profile_sub_info' %}">Subscription history</a>
+            <a class="nav-link active" href="{% url 'purchase_history' %}">Purchase History</a>
         </li>
     </ul>
 
-    {% if subscriptions %}
-        <table class="table">
+    <br>
+    {% if purchases %}
+        <table class="table" style="border-top-style: hidden;">
             <thead>
                 <tr>
                     <th scope="col">Purchase Date</th>
+                    <th scope="col">Subscription</th>
                     <th scope="col">Cost</th>
-                    <th scope="col">Expire Date</th>
                 </tr>
             </thead>
             <tbody>
-                {% for sub in subscriptions %}
+                {% for purchase in purchases %}
                     <tr>
-                        <td>{{ sub.purchase_time }}</td>
-                        <td>{{ sub.cost }}</td>
-                        <th>{{ sub.expire_date }}</th>
+                        <td>{{ purchase.purchase_time }}</td>
+                        <td>{{ purchase.subscribe }}</td>
+                        <td>{{ purchase.cost }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
